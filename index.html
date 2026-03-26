@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusPulse | Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="page dashboard">
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html">
+        <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="index.html">Dashboard</a>
+        <a class="nav-link" href="achievements.html">Achievements</a>
+        <a class="nav-link" href="auth.html" data-auth-link>Login</a>
+        <div class="streak-chip" aria-label="Current streak 0 days">
+          <span class="fire-mark" aria-hidden="true">&#128293;</span>
+          <span class="streak-num">0</span>
+          <span class="streak-day">day streak</span>
+        </div>
+      </nav>
+
+      <div class="header-tools">
+        <button class="mode-toggle" type="button" data-mode-toggle>Dark Mode</button>
+        <a class="header-cta" href="#focus">Focus Timer</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero reveal" style="--delay: 0.05s;">
+        <div class="hero-copy">
+          <p class="eyebrow">Simple Study Dashboard</p>
+          <h1>Keep your tasks, timer, streak, and badges in one clean workflow.</h1>
+      
+
+          <div class="hero-actions">
+            <a class="button button-main" href="#today">Open Task List</a>
+            <a class="button button-ghost" href="achievements.html">View Achievements</a>
+          </div>
+        </div>
+
+        <aside class="hero-summary">
+          <div class="metric-card metric-main">
+            <span class="metric-label">Current Streak</span>
+            <strong class="metric-value" data-streakhero>0 days</strong>
+            <span class="metric-hint" data-streakhint>Complete a task or timer session today to start your streak.</span>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span class="metric-label">Tasks Done</span>
+              <strong class="metric-value" data-taskhero>0</strong>
+              <span class="metric-hint" data-taskhint>0 active tasks in your list.</span>
+            </article>
+
+            <article class="metric-card">
+              <span class="metric-label">Badges</span>
+              <strong class="metric-value" data-badgehero>0</strong>
+              <span class="metric-hint" data-badgehint>Add tasks and finish sessions to unlock badges.</span>
+            </article>
+          </div>
+        </aside>
+      </section>
+
+      <section class="content-grid" id="today">
+        <article class="panel panel-light span-7 reveal" style="--delay: 0.15s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Task Manager</p>
+              <h2>Your study list</h2>
+            </div>
+            <span class="pill" data-planpill>0 active tasks</span>
+          </div>
+
+          <form class="task-form" id="entry">
+            <input class="input-box" id="task" type="text" placeholder="Add a study task" required>
+            <input class="input-box" id="due" type="date">
+            <select class="input-box" id="effort">
+              <option value="high">High effort</option>
+              <option value="medium" selected>Medium effort</option>
+              <option value="low">Low effort</option>
+            </select>
+            <button class="button button-main" type="submit">Add Task</button>
+          </form>
+
+          <p class="panel-note">
+            Add tasks, mark them done, or remove them. The list is sorted automatically by urgency and effort.
+          </p>
+
+          <div class="schedule-list" id="tasks"></div>
+        </article>
+
+        <article class="panel panel-dark span-5 reveal" style="--delay: 0.2s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow light-eye">Auto Priority</p>
+              <h2>Top task picks</h2>
+            </div>
+            <span class="pill pill-light" data-radarpill>0 top picks</span>
+          </div>
+
+          <ul class="priority-list" id="radar"></ul>
+        </article>
+
+        <article class="panel panel-violet span-7 reveal" id="focus" style="--delay: 0.25s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow light-eye">Focus Timer</p>
+              <h2>50 minute study session</h2>
+            </div>
+            <span class="pill line-pill">Fixed Timer</span>
+          </div>
+
+          <label class="field">
+            <span class="field-title light-eye">Session Task</span>
+            <select class="input-box" id="pick"></select>
+          </label>
+
+          <div class="timer-shell">
+            <div class="timer-core">
+              <span class="timer-label">Time Left</span>
+              <strong id="clock">50:00</strong>
+              <span class="timer-label" id="topic">Choose a task to begin</span>
+            </div>
+          </div>
+
+          <div class="hero-actions" aria-label="Timer controls">
+            <button class="button button-main" id="start" type="button">Start</button>
+            <button class="button button-ghost" id="reset" type="button">Reset</button>
+          </div>
+
+          <p class="panel-note note-light" id="state">
+            Ready to start your next sprint.
+          </p>
+
+          <div class="session-meta">
+            <div>
+              <span class="meta-label">Sessions Done</span>
+              <strong id="sessioncount">0</strong>
+            </div>
+            <div>
+              <span class="meta-label">Tasks Active</span>
+              <strong id="taskcount">0</strong>
+            </div>
+            <div>
+              <span class="meta-label">Auto Priority</span>
+              <strong id="autopriority">On</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel panel-light span-5 reveal" style="--delay: 0.3s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Streak Tracker</p>
+              <h2>Study consistency</h2>
+            </div>
+            <span class="pill" id="best">Best: 0 days</span>
+          </div>
+
+          <div class="streak-display">
+            <strong id="streak">0</strong>
+            <span>days of study activity</span>
+          </div>
+
+          <div class="week-track" id="week" aria-label="Weekly streak display"></div>
+        </article>
+
+        <article class="panel panel-light span-12 reveal" style="--delay: 0.35s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Achievements</p>
+              <h2>Progress preview</h2>
+            </div>
+            <a class="pill" href="achievements.html">Open full achievements page</a>
+          </div>
+
+          <div class="badge-grid" id="badgepreview"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand-mark" href="index.html">
+            <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+          </a>
+          <p class="foot-note">
+            A smaller dashboard for tasks, focus sessions, streaks, and badge progress.
+          </p>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Pages</p>
+          <div class="foot-links">
+            <a href="index.html">Dashboard</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="auth.html">Login</a>
+          </div>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Features</p>
+          <div class="foot-tags">
+            <span class="foot-tag">Tasks</span>
+            <span class="foot-tag">Timer</span>
+            <span class="foot-tag">Streak</span>
+            <span class="foot-tag">Badges</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
