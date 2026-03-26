@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusPulse | Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="page auth">
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html">
+        <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="achievements.html">Achievements</a>
+        <a class="nav-link active" href="auth.html" data-auth-link>Login</a>
+        <div class="streak-chip" aria-label="Current streak 0 days">
+          <span class="fire-mark" aria-hidden="true">&#128293;</span>
+          <span class="streak-num">0</span>
+          <span class="streak-day">day streak</span>
+        </div>
+      </nav>
+
+      <div class="header-tools">
+        <button class="mode-toggle" type="button" data-mode-toggle>Dark Mode</button>
+        <a class="header-cta" href="index.html">Back to Dashboard</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="auth-top reveal" style="--delay: 0.05s;">
+        <p class="eyebrow">Account Access</p>
+        <h1>Log in to save you progress to your account.</h1>
+
+        <div class="hero-actions">
+          <button class="button button-main" type="button" data-auth-mode="signup" aria-pressed="false">Create Account</button>
+          <button class="button button-ghost" type="button" data-auth-mode="signin" aria-pressed="true">Sign In</button>
+          <button class="button button-ghost" id="logout" type="button" hidden>Log Out</button>
+        </div>
+
+        <p class="auth-status" id="authmsg">
+          Sign in to continue with your saved tasks, streak, timer, and achievements.
+        </p>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel panel-light span-7 reveal" style="--delay: 0.15s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Account Form</p>
+              <h2 id="authformtitle">Sign in</h2>
+            </div>
+            <span class="pill" id="authpill">Returning student</span>
+          </div>
+
+          <form class="auth-form" id="authform">
+            <div class="field-row auth-single-row" id="authnamefield" hidden>
+              <label class="field">
+                <span class="field-title">Full Name</span>
+                <input class="input-box" id="authname" type="text" placeholder="Amina Kamau">
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span class="field-title">Email Address</span>
+                <input class="input-box" id="authemail" type="email" placeholder="student@example.com" required>
+              </label>
+
+              <label class="field">
+                <span class="field-title">Password</span>
+                <input class="input-box" id="authpassword" type="password" placeholder="Enter your password" required>
+              </label>
+            </div>
+
+            <button class="form-btn form-main" id="authsubmit" type="submit">Sign In</button>
+
+            <p class="auth-note" id="authhelper">
+              New here? Switch to create account.
+            </p>
+          </form>
+        </article>
+
+        <article class="panel panel-dark span-5 reveal" style="--delay: 0.2s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow light-eye">What Gets Saved</p>
+              <h2>Your core progress</h2>
+            </div>
+          </div>
+
+          <div class="spotlight-stack">
+            <article class="spotlight-card">
+              <strong>Task manager</strong>
+              <p>Your task list and auto priority order stay linked to your account.</p>
+            </article>
+            <article class="spotlight-card">
+              <strong>Focus timer</strong>
+              <p>Your completed focus sessions continue from the same saved progress.</p>
+            </article>
+            <article class="spotlight-card">
+              <strong>Streak and achievements</strong>
+              <p>Your streak days and unlocked achievements stay on this device for your account.</p>
+            </article>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand-mark" href="index.html">
+            <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+          </a>
+          <p class="foot-note">
+            One account page for both new users and returning users.
+          </p>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Pages</p>
+          <div class="foot-links">
+            <a href="index.html">Dashboard</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="auth.html">Login</a>
+          </div>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Saved</p>
+          <div class="foot-tags">
+            <span class="foot-tag">Tasks</span>
+            <span class="foot-tag">Timer</span>
+            <span class="foot-tag">Streak</span>
+            <span class="foot-tag">Achievements</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
