@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusPulse | Achievements</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="page awards">
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="index.html">
+        <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link active" href="achievements.html">Achievements</a>
+        <a class="nav-link" href="auth.html" data-auth-link>Login</a>
+        <div class="streak-chip" aria-label="Current streak 0 days">
+          <span class="fire-mark" aria-hidden="true">&#128293;</span>
+          <span class="streak-num">0</span>
+          <span class="streak-day">day streak</span>
+        </div>
+      </nav>
+
+      <div class="header-tools">
+        <button class="mode-toggle" type="button" data-mode-toggle>Dark Mode</button>
+        <a class="header-cta" href="index.html">Back to Dashboard</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero hero-awards reveal" style="--delay: 0.05s;">
+        <div class="hero-copy">
+          <p class="eyebrow">Achievement Progress</p>
+          <h1>See what you have unlocked and what you are close to earning next.</h1>
+        </div>
+
+        <div class="hero-summary">
+          <div class="metric-card metric-main">
+            <span class="metric-label">Badges Unlocked</span>
+            <strong class="metric-value" data-badgehero>0</strong>
+            <span class="metric-hint" data-badgehint>Keep using the app to unlock more badges.</span>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span class="metric-label">Current Streak</span>
+              <strong class="metric-value" data-streakvalue>0 days</strong>
+              <span class="metric-hint" data-streakhint>Best streak: 0 days</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel panel-light span-8 reveal" style="--delay: 0.15s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Achievement Cabinet</p>
+              <h2>All achievements</h2>
+            </div>
+            <span class="pill">Saved on this device</span>
+          </div>
+
+          <div class="badge-grid" id="badges"></div>
+        </article>
+
+        <article class="panel panel-dark span-4 reveal" style="--delay: 0.2s;">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow light-eye">Closest Unlocks</p>
+              <h2>What to do next</h2>
+            </div>
+          </div>
+
+          <div class="spotlight-stack" id="badgegoals"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand-mark" href="index.html">
+            <img class="brand-logo" src="images/Logo.svg" alt="FocusPulse">
+          </a>
+          <p class="foot-note">
+            A simple badge page that tracks your work from tasks, timer sessions, and streaks.
+          </p>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Pages</p>
+          <div class="foot-links">
+            <a href="index.html">Dashboard</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="auth.html">Login</a>
+          </div>
+        </div>
+
+        <div class="foot-block">
+          <p class="foot-title">Tracks</p>
+          <div class="foot-tags">
+            <span class="foot-tag">Tasks</span>
+            <span class="foot-tag">Sessions</span>
+            <span class="foot-tag">Streaks</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
