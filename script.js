@@ -1,15 +1,9 @@
 (() => {
-  // ---------------------------------------------------------------------------
-  // App setup and shared helpers
-  // ---------------------------------------------------------------------------
   // Save all app data under one key.
   const KEY = "focuspulse-state-v6";
   const TIMER = 50 * 60;
-
-  // ---------------------------------------------------------------------------
   // 1. Badges
   // Defines each badge, how progress is measured, and which badge art to show.
-  // ---------------------------------------------------------------------------
   const BADGES = [
     {
       key: "planner",
@@ -120,10 +114,7 @@
   let timerId = 0;
 
   init();
-
-  // ---------------------------------------------------------------------------
   // Storage and shared state
-  // ---------------------------------------------------------------------------
   function init() {
     prepare();
     bindTheme();
@@ -300,11 +291,8 @@
     prepare();
     render();
   }
-
-  // ---------------------------------------------------------------------------
   // 1. Badges
   // Unlocks badges, calculates badge progress, and renders achievements UI.
-  // ---------------------------------------------------------------------------
   function syncBadges() {
     // Unlock any badge whose goal has been reached.
     const currentData = data();
@@ -375,11 +363,8 @@
           .join("")
       : `<article class="spotlight-card"><strong>All badges unlocked</strong><p>Your achievement cabinet is fully complete.</p><div class="progress-bar bar-light"><span style="width: 100%;"></span></div></article>`;
   }
-
-  // ---------------------------------------------------------------------------
   // 2. Streaks
   // Tracks daily study activity and renders the 7-day streak strip.
-  // ---------------------------------------------------------------------------
   function markStudyDay() {
     // More work on the same day should not add extra streak days.
     const currentData = data(),
@@ -417,11 +402,8 @@
     text("#best", `Best: ${data().streak.best} days`);
     text("#streak", data().streak.count);
   }
-
-  // ---------------------------------------------------------------------------
   // 3. Login and creating account
   // Handles sign in, sign up, sign out, and the auth page state.
-  // ---------------------------------------------------------------------------
   function bindAuth() {
     if (!document.body.classList.contains("auth")) return;
 
@@ -433,7 +415,6 @@
         render();
       }),
     );
-
     $("#authform")?.addEventListener("submit", (event) => {
       event.preventDefault();
       state.auth.mode === "signup" ? createAccount() : signIn();
@@ -441,24 +422,20 @@
 
     $("#logout")?.addEventListener("click", signOut);
   }
-
   function createAccount() {
     const name = $("#authname")?.value.trim() || "";
     const userEmail = email($("#authemail")?.value || "");
     const password = $("#authpassword")?.value.trim() || "";
-
     if (!name || !userEmail || !password)
       return setAuthMessage(
         "Fill in your name, email, and password first.",
         "error",
       );
-
     if (state.auth.users.some((entry) => entry.email === userEmail))
       return setAuthMessage(
         "That email already has an account. Switch to sign in.",
         "error",
       );
-
     state.auth.users.push({
       id: uid(),
       name,
@@ -563,16 +540,12 @@
     box.classList.remove("success", "error");
     if (tone) box.classList.add(tone);
   }
-
-  // ---------------------------------------------------------------------------
   // 4. Timer
   // Runs the focus countdown for the currently selected task.
-  // ---------------------------------------------------------------------------
   function selectedTask() {
     syncTask();
     return data().tasks.find((task) => task.id === data().timer.taskId) || null;
   }
-
   function startTimer() {
     stopTimer();
     data().timer.running = true;
@@ -644,11 +617,8 @@
       $(".timer-shell").style.background =
         `conic-gradient(var(--ghost) 0 ${progress}%, rgba(247, 247, 255, 0.14) ${progress}% 100%)`;
   }
-
-  // ---------------------------------------------------------------------------
   // 5. Task manager
   // Creates, sorts, completes, removes, and displays study tasks.
-  // ---------------------------------------------------------------------------
   function syncTask() {
     // Keep the timer linked to a real task in the list.
     const tasks = sortedTasks();
@@ -699,7 +669,6 @@
 
   function bindDashboard() {
     if (!document.body.classList.contains("dashboard")) return;
-
     // Task creation form.
     $("#entry")?.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -747,7 +716,6 @@
       save();
       render();
     });
-
     // Timer controls tied to the selected task.
     $("#start")?.addEventListener("click", () => {
       if (!selectedTask()) {
@@ -807,7 +775,9 @@
           .slice(0, 3)
           .map(
             (task, index) =>
-              `<li class="priority-item"><div><strong>${esc(task.title)}</strong><p>${esc(dueText(task))}. ${esc(effort(task.effort))} effort keeps it near the top.</p></div><span class="priority-rank">${String(index + 1).padStart(2, "0")}</span></li>`,
+              `<li class="priority-item">
+              <div><strong>${esc(task.title)}</strong><p>${esc(dueText(task))}. ${esc(effort(task.effort))} effort keeps it near the top.</p>
+              </div><span class="priority-rank">${String(index + 1).padStart(2, "0")}</span></li>`,
           )
           .join("")
       : `<li class="priority-item"><div><strong>No task picked yet</strong><p>Add a task and auto priority will rank it here.</p></div><span class="priority-rank">00</span></li>`;
@@ -827,10 +797,7 @@
     renderWeek();
     renderBadgeCards("badgepreview", 3);
   }
-
-  // ---------------------------------------------------------------------------
   // Theme and shared rendering
-  // ---------------------------------------------------------------------------
   function bindTheme() {
     $$("[data-mode-toggle]").forEach((button) =>
       button.addEventListener("click", () => {
@@ -855,7 +822,6 @@
       button.textContent = state.theme === "dark" ? "Light Mode" : "Dark Mode";
     });
   }
-
   function renderNav() {
     text(".streak-num", data().streak.count);
     $$(".streak-chip").forEach((node) =>
